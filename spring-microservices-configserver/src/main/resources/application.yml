@@ -5,4 +5,5 @@ spring:
     config:
       server:
         git:
-          uri: 
+          uri: https://github.com/devdcores/spring-microservices
+          search-paths: '*bangalore*,*bangalore*/*City'
