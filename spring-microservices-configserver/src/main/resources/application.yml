@@ -1,9 +1,23 @@
 server:
   port: 8888
+
 spring:
   cloud:
     config:
       server:
         git:
           uri: https://github.com/devdcores/spring-microservices
-          search-paths: '*bangalore*,*bangalore*/*City'
+          search-paths: '*bangalore-tolls,*bangalore-tolls/*City'
+          repos:
+            perf:
+              pattern: "*/performance"
+              uri: https://github.com/devdcores/spring-microservices
+              search-paths: '*bangalore*performance,*bangalore*performance/*City'
+        encrypt:
+          enabled: false
+security:
+  basic:
+    enabled: true
+  user:
+    name: devd
+    password: devd
