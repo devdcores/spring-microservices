@@ -1,0 +1,51 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.devd.microservices'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+ext {
+	springCloudTaskVersion = '1.1.2.RELEASE'
+	springCloudVersion = 'Brixton.SR6'
+}
+
+dependencies {
+	//compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-amqp')
+	compile('org.springframework.cloud:spring-cloud-starter-task')
+	compile('org.springframework.cloud:spring-cloud-starter-task')
+	compile('org.springframework.cloud:spring-cloud-stream')
+	compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit')
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-deployer-local
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-deployer-local', version: '1.0.3.RELEASE'
+
+
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-task-dependencies:${springCloudTaskVersion}"
+	}
+}
